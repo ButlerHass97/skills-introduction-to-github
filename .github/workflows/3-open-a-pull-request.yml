@@ -24,7 +24,7 @@ jobs:
       !github.event.repository.is_template &&
       github.head_ref == 'my-first-branch'
     name: Find Exercise Issue
-    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.7.0
+    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.9.3
 
   check_step_work:
     name: Check step work
@@ -43,7 +43,7 @@ jobs:
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
-          ref: v0.7.0
+          ref: v0.9.3
 
       - name: Find last comment
         id: find-last-comment
@@ -106,6 +106,7 @@ jobs:
         if: contains(steps.*.outcome, 'failure')
         run: exit 1
 
+
   post_next_step_content:
     name: Post next step content
     needs: [find_exercise, check_step_work]
@@ -123,7 +124,7 @@ jobs:
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
-          ref: v0.7.0
+          ref: v0.9.3
 
       - name: Create comment - step finished
         uses: GrantBirki/comment@v2.1.1
