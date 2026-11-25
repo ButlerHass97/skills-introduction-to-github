@@ -3,7 +3,7 @@ name: Step 3 # Open a pull request
 # Checks if the learner completed tasks for step 3.
 # - Triggers when the user creates or edits the pull request.
 # - Checks the pull request title and description. Adds a PR comment.
-# - If all checks pass, the workflow is disabled so it doesn't run again. As such, workflow status badge will change to green.
+# - If all checks pass, the workflow is disabled so it doesn't run again. As such, the workflow status badge will change to green.
 
 on:
   pull_request:
@@ -37,7 +37,7 @@ jobs:
     needs: find_exercise
     env:
       ISSUE_REPOSITORY: ${{ github.repository }}
-      ISSUE_NUMBER: ${{ needs.find_exercise.outputs.issue-number }}
+      ISSUE_NUMBER: ${{ needs.find_exercise.outputs }}
 
     steps:
       - name: Checkout
@@ -117,7 +117,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ISSUE_REPOSITORY: ${{ github.repository }}
-      ISSUE_NUMBER: ${{ needs.find_exercise.outputs.issue-number }}
+      ISSUE_NUMBER: ${{ needs.find_exercise.outputs }}
 
     steps:
       - name: Checkout
