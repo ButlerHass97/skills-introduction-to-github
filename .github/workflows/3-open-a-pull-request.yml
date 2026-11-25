@@ -1,10 +1,5 @@
 name: Step 3 # Open a pull request
 
-# Checks if the learner completed tasks for step 3.
-# - Triggers when the user creates or edits the pull request.
-# - Checks the pull request title and description. Adds a PR comment.
-# - If all checks pass, the workflow is disabled so it doesn't run again. As such, workflow status badge will change to green.
-
 on:
   pull_request:
     branches:
@@ -86,7 +81,7 @@ jobs:
             echo "STEP_MESSAGE=Pull request description" >> $GITHUB_OUTPUT
           else
             echo "STEP_MESSAGE=Pull request description is empty" >> $GITHUB_OUTPUT
-            exit 1
+            exit 1:
           fi
         env:
           PR_BODY: ${{ github.event.pull_request.body }}
